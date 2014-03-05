@@ -9,5 +9,27 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require_self
+ *= require bootstrap/bootstrap.css
+ *= require bootstrap/bootstrap-responsive.css
+ *= require jquery_ui/jquery-ui-1.10.0.custom.css
+ *= require jquery_ui/jquery.ui.1.10.0.ie.css
+ *= require plugins/bootstrap_switch/bootstrap-switch.css
+ *= require plugins/xeditable/bootstrap-editable.css
+ *= require plugins/common/bootstrap-wysihtml5.css
+ *= require plugins/jquery_fileupload/jquery.fileupload-ui.css
+ *= require plugins/fullcalendar/fullcalendar.css
+ *= require plugins/select2/select2.css
+ *= require plugins/mention/mention.css
+ *= require plugins/tabdrop/tabdrop.css
+ *= require plugins/jgrowl/jquery.jgrowl.min.css
+ *= require plugins/datatables/bootstrap-datatable.css
+ *= require plugins/dynatree/ui.dynatree.css
+ *= require plugins/bootstrap_colorpicker/bootstrap-colorpicker.css
+ *= require plugins/bootstrap_datetimepicker/bootstrap-datetimepicker.min.css
+ *= require plugins/bootstrap_daterangepicker/bootstrap-daterangepicker.css
+ *= require plugins/flags/flags.css
+ *= require plugins/slider_nav/slidernav.css
+ *= require plugins/fuelux/wizard.css
+ *= require light-theme.css
  *= require_tree .
  */

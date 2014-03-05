@@ -3,11 +3,21 @@ ruby '2.0.0'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.0'
-gem 'bootstrap-sass', '2.3.2.0'
+
+#样式
+#gem 'bootstrap-sass', '2.3.2.0'
+
+#加密
 gem 'bcrypt-ruby', '~> 3.0.0'
-gem 'faker', '1.1.2'
+
+#gem 'faker', '1.1.2'
+
+#分页
 gem 'will_paginate', '3.0.4'
 gem 'bootstrap-will_paginate', '0.0.9'
+
+#导航条
+gem 'breadcrumbs_on_rails'
 
 # Use sqlite3 as the database for Active Record
 group :development, :test do

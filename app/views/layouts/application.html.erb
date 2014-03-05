@@ -1,14 +1,18 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>MyappV1</title>
+  <title><%= full_title(yield(:title)) %></title>
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
+  <%= render 'layouts/shiv' %>
 </head>
-<body>
+<body class ='contrast-fb'>
+	<%= render 'layouts/header' %>
+	<%= render 'layouts/nav' %>
+
 
 <%= yield %>
-
+<%= debug(params) if Rails.env.development? %>
 </body>
 </html>

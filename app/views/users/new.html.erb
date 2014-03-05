@@ -1,0 +1,70 @@
+<% provide(:title, 'Sign up') %>
+<div id='wrapper'>
+    <div class='application'>
+        <div class='application-content'>
+            <%= link_to '#' do %>
+                <div class='icon-heart'></div>
+                <span>My Web App</span>
+            <% end %>
+        </div>
+    </div>
+    <div class='controls'>
+        <div class='caret'></div>
+        <div class='form-wrapper'>
+            <h1 class='text-center'>新用户注册</h1>
+            <%= form_for(@user) do |f| %>
+            <%= render 'shared/error_messages', object: f.object %>
+                <div class='row-fluid'>
+                    <div class='span12 icon-over-input'>
+                        <%= f.text_field :ename, class: "span12", placeholder: "英文名" %>
+                        <i class='icon-user muted'></i>
+                    </div>
+                </div>
+                <div class='row-fluid'>
+                    <div class='span12 icon-over-input'>
+                        <%= f.text_field :cname, class: "span12", placeholder: "中文名" %>
+                        <i class='icon-user-md muted'></i>
+                    </div>
+                </div>
+                <div class='row-fluid'>
+                    <div class='span12 icon-over-input'>
+                        <%= f.select :branch_code, Branch.all.collect { |b| [b.branch_name, b.branch_code] },
+                                {:include_blank => true}, class: "span12" %>
+                    </div>
+                </div>
+                <div class='row-fluid'>
+                    <div class='span12 icon-over-input'>
+                        <%= f.select :role_id, {"管理员" => "admin"}, {:include_blank => true}, class: "span12" %>
+                    </div>
+                </div>
+                <div class='row-fluid'>
+                    <div class='span12 icon-over-input'>
+                        <%= f.password_field :password, class: "span12", placeholder: "密码" %>
+                        <i class='icon-lock muted'></i>
+                    </div>
+                </div>
+                <div class='row-fluid'>
+                    <div class='span12 icon-over-input'>
+                        <%= f.password_field :password_confirmation, class: "span12", placeholder: "确认密码" %>
+                        <i class='icon-lock muted'></i>
+                    </div>
+                </div>
+                <%= f.submit "注册", class: "btn btn-block" %>
+            <% end %>
+            <div class='text-center'>
+                <hr class='hr-normal' />
+                <%= link_to '#' do %>
+                    <i class='icon-chevron-left'></i>
+                    返回登录
+                <% end %>
+            </div>
+        </div>
+    </div>
+    <div class='login-action text-center'>
+        <%= link_to '#' do %>
+            <i class='icon-lock'></i>
+            忘记密码？
+        <% end %>
+    </div>
+</div>
+</body>

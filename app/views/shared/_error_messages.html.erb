@@ -1,0 +1,12 @@
+<% if object.errors.any? %>
+	<div id="error_explanation">
+		<div class="alert alert-error">
+			对不起，请检查下列 <%= object.errors.count %>个错误：
+		</div>
+		<ul>
+		<% object.errors.messages.each do |msg| %>
+			<li><%= msg.second.join('，') %></li>
+		<% end %>
+		</ul>
+	</div>
+<% end %>
