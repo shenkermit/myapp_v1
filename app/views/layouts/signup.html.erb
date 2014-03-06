@@ -8,7 +8,17 @@
   <%= render 'layouts/shiv' %>
 </head>
 <body class='contrast-fb sign-up contrast-background'>
-	<%= yield %>
+	<div id='wrapper'>
+    	<div class='application'>
+        	<div class='application-content'>
+            	<%= link_to '#' do %>
+                	<div class='icon-heart'></div>
+                	<span>My Web App</span>
+            	<% end %>
+        	</div>
+    	</div>
+		<%= yield %>
+	</div>
 	<%= debug(params) if Rails.env.development? %>
 </body>
 </html>

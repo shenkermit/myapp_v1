@@ -12,6 +12,8 @@ class UsersController < ApplicationController
 	def create
 		@user = User.new(user_params)
 		if @user.save
+			sign_in @usesr
+			flash.now[:success] = "恭喜您，注册成功！"
 			redirect_to @user
 		else
 			render 'new', :layout => "signup"

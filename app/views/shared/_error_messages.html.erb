@@ -5,7 +5,7 @@
 		</div>
 		<ul>
 		<% object.errors.messages.each do |msg| %>
-			<li><%= msg.second.join('，') %></li>
+			<li> * <%= msg.second.join('，') %></li>
 		<% end %>
 		</ul>
 	</div>
