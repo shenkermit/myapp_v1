@@ -9,7 +9,7 @@
         <%= form_for(:session, url: sessions_path) do |f| %>
         	<div class='row-fluid'>
         		<div class='span12 icon-over-input'>
-        			<%= f.text_field :email, class: "span12", placeholder: "邮箱地址" %>
+        			<%= f.text_field :email, class: "span12", placeholder: "邮箱地址", value: @new_email %>
                     <i class='icon-user muted'></i>
         		</div>
         	</div>
