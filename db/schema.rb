@@ -28,7 +28,7 @@ ActiveRecord::Schema.define(version: 20140306072518) do
     t.string   "email"
     t.string   "password_digest"
     t.string   "branch_code"
-    t.string   "role_id"
+    t.string   "role_id",         default: "user"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "remember_token"

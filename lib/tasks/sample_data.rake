@@ -8,10 +8,18 @@ end
 
 def make_users
 	User.create(ename: "001",
-				cname: "凹凸曼",
+				cname: "凹凸曼1号",
 				email: "001@qq.com",
 				branch_code: "0000",
 				role_id: "admin",
+				password: "123456",
+				password_confirmation: "123456")
+
+	User.create(ename: "002",
+				cname: "凹凸曼2号",
+				email: "002@qq.com",
+				branch_code: "0001",
+				role_id: "user",
 				password: "123456",
 				password_confirmation: "123456")
 end

@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
 	validates_presence_of :cname, message: '中文名不能为空'
 	validates_presence_of :email, message: '邮箱地址不能为空'
 	validates_presence_of :branch_code, message: '所属分支机构不能为空'
-	validates_presence_of :role_id, message: '角色名不能为空'
+	#validates_presence_of :role_id, message: '角色名不能为空'
 
 	validates :ename, :length=>{ maximum: 10, too_long: '英文名不得超过10位' }
 	validates :cname, :length=>{ maximum: 10, too_long: '中文名不能超过5位' }
@@ -24,6 +24,10 @@ class User < ActiveRecord::Base
 
 	def User.encrypt(token)
 		Digest::SHA1.hexdigest(token.to_s)
+	end
+
+	def admin?
+		self.role_id == 'admin'
 	end
 
 	private
