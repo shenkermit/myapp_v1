@@ -15,7 +15,7 @@ class UsersController < ApplicationController
 			#sign_in @user
 			flash.now[:success] = "恭喜您，注册成功，请重新登陆！"
 			#redirect_to root_path
-			redirect_to signin_path, :layout => "signup"
+			redirect_to signin_path(email: @user.email), :layout => "signup"
 		else
 			render 'new', :layout => "signup"
 		end

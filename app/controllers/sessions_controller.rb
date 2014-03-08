@@ -2,7 +2,7 @@ class SessionsController < ApplicationController
 	layout 'signup', only: :new
 
 	def new
-		
+		@new_email = params[:email].downcase unless params[:email].nil?
 	end
 
 	def create
