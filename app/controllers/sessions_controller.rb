@@ -1,6 +1,7 @@
 class SessionsController < ApplicationController
 	layout 'signup', only: :new
-
+	before_action :signed_in_user, only: [:destroy]
+	
 	def new
 		@new_email = params[:email].downcase unless params[:email].nil?
 	end
@@ -20,4 +21,9 @@ class SessionsController < ApplicationController
 		sign_out
 		redirect_to root_path
 	end
+
+	private
+		def signed_in_user
+			redirect_to root_path, notice: "您还未登陆，请先登陆！" unless signed_in?
+		end
 end
