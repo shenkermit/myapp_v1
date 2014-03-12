@@ -44,7 +44,7 @@
                                         <div class='control-group'>
                                             <div class='controls'>
                                                 <label class='checkbox'>
-                                                    <input data-target='#change-password' data-toggle='collapse' id='changepasswordcheck' type='checkbox' value='option1' />
+                                                    <%= check_box_tag :_checked, "1", false, {:'data-target'=>'#change-password', :'data-toggle'=>'collapse'} %>
                                                     修改密码？
                                                 </label>
                                             </div>

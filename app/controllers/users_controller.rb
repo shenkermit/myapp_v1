@@ -26,12 +26,23 @@ class UsersController < ApplicationController
 
 	def update
 		@user = User.find(params[:id])
-		if @user.update_attributes(user_params)
-			flash[:success] = "更新成功"
-			sign_in @user
-			redirect_to @user
+		_checked = params[:_checked] || '0'
+		if _checked == '1'	
+			if @user.update_attributes(user_params)
+				flash[:success] = "更新成功"
+				sign_in @user
+				redirect_to @user
+			else
+				render 'edit'
+			end
 		else
-			render 'edit'
+			if @user.update_attributes(user_params)
+				flash[:success] = "更新成功"
+				sign_in @user
+				redirect_to @user
+			else
+				render 'edit'
+			end
 		end
 	end
 

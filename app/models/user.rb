@@ -14,7 +14,7 @@ class User < ActiveRecord::Base
 	validates :email, format: { with: VALID_EMAIL_REGEX, :message => '邮箱格式不正确' },
 		uniqueness: { case_sensitive: false, :message => '您的邮箱已被注册' }
 
-	validates_length_of :password, :within => 6..10, message: '密码长度错误，应在6到10位之间'
+	validates_length_of :password, :within => 6..10, message: '密码长度错误，应在6到10位之间', allow_nil: true
 
 	has_secure_password
 
