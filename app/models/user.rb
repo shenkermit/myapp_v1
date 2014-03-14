@@ -1,11 +1,13 @@
 class User < ActiveRecord::Base
 	before_save { self.email = email.downcase }
 	before_create :create_remember_token
+	belongs_to :branch
+	belongs_to :role
 
 	validates_presence_of :ename, message: '英文名不能为空'
 	validates_presence_of :cname, message: '中文名不能为空'
 	validates_presence_of :email, message: '邮箱地址不能为空'
-	validates_presence_of :branch_code, message: '所属分支机构不能为空'
+	validates_presence_of :branch_id, message: '所属分支机构不能为空'
 	#validates_presence_of :role_id, message: '角色名不能为空'
 
 	validates :ename, :length=>{ maximum: 10, too_long: '英文名不得超过10位' }
@@ -27,7 +29,7 @@ class User < ActiveRecord::Base
 	end
 
 	def admin?
-		self.role_id == 'admin'
+		self.role_id == 1
 	end
 
 	private

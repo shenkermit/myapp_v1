@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
 	layout 'signup', only: :new
 	before_action :signed_in_user, only: [:edit, :update, :show]
+	before_action :correct_user, only: [:edit, :update]
 
 	def new
 		@user = User.new
@@ -49,11 +50,19 @@ class UsersController < ApplicationController
 	private
 		def user_params
 			params.require(:user).permit(:ename, :cname, :email, 
-							:branch_code, :role_id,
+							:branch_id, :role_id,
 							:password, :password_confirmation)
 		end
 
 		def signed_in_user
-			redirect_to root_path, notice: "您还未登陆，请先登陆！" unless signed_in?
+			unless signed_in?
+				store_location
+				redirect_to root_path, notice: "您还未登陆，请先登陆！"
+			end
+		end
+
+		def correct_user
+			@user = User.find(params[:id])
+			redirect_to home_path, notice: "对不起，您不能查看他人的资料！" unless current_user?(@user)
 		end
 end

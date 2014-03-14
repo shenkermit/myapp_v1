@@ -9,11 +9,22 @@
 </head>
 <body class ='contrast-fb'>
 	<%= render 'layouts/header' %>
-	<%= render 'layouts/nav' %>
-	<% flash.each do |key, value| %>
-		<%= content_tag(:div, value, class: "alert alert-#{key}" ) %>
-	<% end %>
-	<%= yield %>
-	<%= debug(params) if Rails.env.development? %>
+	<div id='wrapper'>
+		<div id='main-nav-bg'></div>
+		<%= render 'layouts/nav' %>
+    <section id='content'>
+      <div class='container-fluid'>
+        <div class='row-fluid' id='content-wrapper'>
+          <div class='span12'>
+        		<% flash.each do |key, value| %>
+        			<%= content_tag(:div, value, class: "alert alert-#{key}" ) %>
+        		<% end %>
+        		<%= yield %>
+        		<%= debug(params) if Rails.env.development? %>
+          </div>
+        </div>
+      </div>
+    </section>
+	</div>
 </body>
 </html>

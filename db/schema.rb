@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140306072518) do
+ActiveRecord::Schema.define(version: 20140313133420) do
 
   create_table "branches", force: true do |t|
     t.string   "branch_code"
@@ -22,13 +22,21 @@ ActiveRecord::Schema.define(version: 20140306072518) do
 
   add_index "branches", ["branch_code"], name: "index_branches_on_branch_code", unique: true
 
+  create_table "roles", force: true do |t|
+    t.string   "role_name"
+    t.string   "role_cname"
+    t.string   "role_content"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "users", force: true do |t|
     t.string   "ename"
     t.string   "cname"
     t.string   "email"
     t.string   "password_digest"
-    t.string   "branch_code"
-    t.string   "role_id",         default: "user"
+    t.integer  "branch_id"
+    t.integer  "role_id",         default: 2
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "remember_token"

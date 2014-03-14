@@ -1,116 +1,107 @@
 <% provide(:title, "Edit user") %>
-<section id='content'>
-    <div class='container-fluid'>
-        <div class='row-fluid' id='content-wrapper'>
-            <div class='span12'>
-                <div class='page-header'>
-                    <h1 class='pull-left'>
-                        <i class='icon-user'></i>
-                        <span>编辑</span>
-                    </h1>
-                </div>
-                <div class='row-fluid'>
-                    <div class='span3 box'>
-                        <div class='box-content'>
-                            <img alt="230x230&amp;text=photo" src="http://placehold.it/230x230&amp;text=Photo" />
-                        </div>
-                    </div>
-                    <div class='span9 box'>
-                        <div class='box-content box-double-padding'>
-                        	<%= form_for(@user) do |f| %>
-                                <fieldset>
-                                    <div class='span4'>
-                                    	<%= render 'shared/error_messages', object: f.object %>
-                                        <div class='lead'>
-                                            <i class='icon-signin text-contrast'></i>
-                                            登录信息
-                                        </div>
-                                        <small class='muted'>您登录时所需要的信息，用户名、邮箱地址、密码信息</small>
-                                    </div>
-                                    <div class='span7 offset1'>
-                                        <div class='control-group'>
-                                            <%= f.label :ename, "英文名", class: "control-label" %>
-                                            <div class='controls'>
-                                            	<%= f.text_field :ename, class: "span12", placeholder: "英文名" %>
-                                            </div>
-                                        </div>
-                                        <div class='control-group'>
-                                            <%= f.label :email, "邮箱地址", class: "control-label" %>
-                                            <div class='controls'>
-                                            	<%= f.text_field :email, class: "span12", placeholder: "邮箱地址" %>
-                                            </div>
-                                        </div>
-                                        <hr class='hr-normal' />
-                                        <div class='control-group'>
-                                            <div class='controls'>
-                                                <label class='checkbox'>
-                                                    <%= check_box_tag :_checked, "1", false, {:'data-target'=>'#change-password', :'data-toggle'=>'collapse'} %>
-                                                    修改密码？
-                                                </label>
-                                            </div>
-                                        </div>
-                                        <div class='collapse' id='change-password'>
-                                            <div class='control-group'>
-                                                <%= f.label :password, "密码", class: "control-label" %>
-                                                <div class='controls'>
-                                                	<%= f.password_field :password, class: 'span12', placeholder: '密码' %>
-                                                </div>
-                                            </div>
-                                            <div class='control-group'>
-                                                <%= f.label :password_confirmation, "确认密码", class: "control-label" %>
-                                                <div class='controls'>
-                                                    <%= f.password_field :password_confirmation, class: 'span12', placeholder: '确认密码' %>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </fieldset>
-                                <hr class='hr-normal' />
-                                <fieldset>
-                                    <div class='span4 box'>
-                                        <div class='lead'>
-                                            <i class='icon-user text-contrast'></i>
-                                            附加信息
-                                        </div>
-                                        <small class='muted'>附加信息，只做备注</small>
-									</div>
-									<div class='span7 offset1'>
-										<div class='control-group'>
-											<%= f.label :cname, "中文名", class: "control-label" %>
-											<div class='controls'>
-												<%= f.text_field :cname, class: "span12", placeholder: "中文名" %>
-											</div>
-										</div>
-                                        <div class='control-group'>
-                                        	<%= f.label :branch_code, "所属分支机构", class: "control-label" %>
-							                <div class='controls'>
-							                    <%= f.select :branch_code, Branch.all.collect { |b| [b.branch_name, b.branch_code] },
-							                            {:include_blank => true}, class: "span12" %>
-							                </div>
-							            </div>
-							            <% if current_user.admin? %>
-								            <div class='control-group'>
-								            	<%= f.label :role_id, "角色", class: "control-label" %>
-								                <div class='controls'>
-								                    <%= f.select :role_id, {"管理员" => "admin", "普通用户" => "user"}, {:include_blank => true}, class: "span12" %>
-								                </div>
-								            </div>
-								         <% end %>
-                                    </div>
-                                </fieldset>
-                                <div class='form-actions' style='margin-bottom: 0;'>
-                                    <div class='text-right'>
-                                        <%= button_tag class: "btn btn-primary btn-large" do %>
-                                        	<i class='icon-save'></i>
-                                        	保存修改
-                                        <% end %>
-                                    </div>
-                                </div>
-                            <% end %>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+<div class='page-header'>
+  <h1 class='pull-left'>
+    <i class='icon-wrench'></i>
+    <span>编辑</span>
+  </h1>
+</div>
+<div class='row-fluid'>
+  <div class='span3 box'>
+    <div class='box-content'>
+      <%= image_tag "default_user.gif", alt: "default_user.gif", size:"230x230" %>
     </div>
-</section>
+  </div>
+  <div class='span9 box'>
+    <div class='box-content box-double-padding'>
+    	<%= form_for(@user) do |f| %>
+        <fieldset>
+          <div class='span4'>
+          	<%= render 'shared/error_messages', object: f.object %>
+            <div class='lead'>
+              <i class='icon-signin text-contrast'></i>
+              登录信息
+            </div>
+            <small class='muted'>您登录时所需要的信息，用户名、邮箱地址、密码信息</small>
+          </div>
+          <div class='span7 offset1'>
+            <div class='control-group'>
+              <%= f.label :ename, "英文名", class: "control-label" %>
+              <div class='controls'>
+              	<%= f.text_field :ename, class: "span12", placeholder: "英文名" %>
+              </div>
+            </div>
+            <div class='control-group'>
+              <%= f.label :email, "邮箱地址", class: "control-label" %>
+              <div class='controls'>
+              	<%= f.text_field :email, class: "span12", placeholder: "邮箱地址" %>
+              </div>
+            </div>
+            <hr class='hr-normal' />
+            <div class='control-group'>
+              <div class='controls'>
+                <label class='checkbox'>
+                  <%= check_box_tag :_checked, "1", false, {:'data-target'=>'#change-password', :'data-toggle'=>'collapse'} %>
+                  修改密码？
+                </label>
+              </div>
+            </div>
+            <div class='collapse' id='change-password'>
+              <div class='control-group'>
+                <%= f.label :password, "密码", class: "control-label" %>
+                <div class='controls'>
+                	<%= f.password_field :password, class: 'span12', placeholder: '密码' %>
+                </div>
+              </div>
+              <div class='control-group'>
+                <%= f.label :password_confirmation, "确认密码", class: "control-label" %>
+                <div class='controls'>
+                  <%= f.password_field :password_confirmation, class: 'span12', placeholder: '确认密码' %>
+                </div>
+              </div>
+            </div>
+          </div>
+        </fieldset>
+        <hr class='hr-normal' />
+        <fieldset>
+          <div class='span4 box'>
+            <div class='lead'>
+              <i class='icon-user text-contrast'></i>
+              附加信息
+            </div>
+            <small class='muted'>附加信息，只做备注</small>
+          </div>
+        	<div class='span7 offset1'>
+            <div class='control-group'>
+              <%= f.label :cname, "中文名", class: "control-label" %>
+              <div class='controls'>
+                <%= f.text_field :cname, class: "span12", placeholder: "中文名" %>
+              </div>
+            </div>
+            <div class='control-group'>
+              <%= f.label :branch_code, "所属分支机构", class: "control-label" %>
+              <div class='controls'>
+                <%= f.select :branch_id, Branch.all.collect { |b| [b.branch_name, b.id] },{:include_blank => true}, class: "span12" %>
+              </div>
+            </div>
+            <% if current_user.admin? %>
+              <div class='control-group'>
+                <%= f.label :role_id, "角色", class: "control-label" %>
+                <div class='controls'>
+                  <%= f.select :role_id, Role.all.collect { |r| [r.role_cname, r.id] }, {:include_blank => true}, class: "span12" %>
+                </div>
+              </div>
+            <% end %>
+          </div>
+        </fieldset>
+        <div class='form-actions' style='margin-bottom: 0;'>
+          <div class='text-right'>
+            <%= button_tag class: "btn btn-primary btn-large" do %>
+            	<i class='icon-save'></i>
+            	保存修改
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

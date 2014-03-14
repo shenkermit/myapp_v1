@@ -1,38 +1,38 @@
 <% provide(:title, 'Sign in') %>
 <div class='controls'>
-    <div class='caret'></div>
-    <div class='form-wrapper'>
-        <h1 class='text-center'>登录</h1>
-        <% flash.each do |key, value| %>
-          <%= content_tag(:div, value, class: "alert alert-#{key}" ) %>
-        <% end %>
-        <%= form_for(:session, url: sessions_path) do |f| %>
-        	<div class='row-fluid'>
-        		<div class='span12 icon-over-input'>
-        			<%= f.text_field :email, class: "span12", placeholder: "邮箱地址", value: @new_email %>
-                    <i class='icon-user muted'></i>
-        		</div>
-        	</div>
-        	<div class='row-fluid'>
-        		<div class='span12 icon-over-input'>
-        			<%= f.password_field :password, class: "span12", placeholder: "密码" %>
-        			<i class='icon-lock muted'></i>
-        		</div>
-        	</div>
-        	<%= f.submit "登录", class: "btn btn-block" %>
-        <% end %>
-        <div class='text-center'>
-            <hr class='hr-normal' />
-            <%= link_to '#' do %>
-		        <i class='icon-lock'></i>
-		        忘记密码？
-		    <% end %>
-        </div>
+  <div class='caret'></div>
+  <div class='form-wrapper'>
+    <h1 class='text-center'>登录</h1>
+    <% flash.each do |key, value| %>
+      <%= content_tag(:div, value, class: "alert alert-#{key}" ) %>
+    <% end %>
+    <%= form_for(:session, url: sessions_path) do |f| %>
+    	<div class='row-fluid'>
+    		<div class='span12 icon-over-input'>
+    			<%= f.text_field :email, class: "span12", placeholder: "邮箱地址", value: @new_email %>
+          <i class='icon-user muted'></i>
+    		</div>
+    	</div>
+    	<div class='row-fluid'>
+    		<div class='span12 icon-over-input'>
+    			<%= f.password_field :password, class: "span12", placeholder: "密码" %>
+    			<i class='icon-lock muted'></i>
+    		</div>
+    	</div>
+    	<%= f.submit "登录", class: "btn btn-block" %>
+    <% end %>
+    <div class='text-center'>
+      <hr class='hr-normal' />
+      <%= link_to '#' do %>
+        <i class='icon-lock'></i>
+        忘记密码？
+      <% end %>
     </div>
+  </div>
 </div>
 <div class='login-action text-center'>
-    <%= link_to signup_path do %>
-    	<i class='icon-user'></i>
-    	还没注册？快去<strong>注册</strong>吧
-    <% end %>
+  <%= link_to signup_path do %>
+    <i class='icon-user'></i>
+    还没注册？快去<strong>注册</strong>吧
+  <% end %>
 </div>

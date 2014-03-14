@@ -5,8 +5,8 @@ class CreateUsers < ActiveRecord::Migration
       t.string :cname
       t.string :email
       t.string :password_digest
-      t.string :branch_code
-      t.string :role_id, default: 'user'
+      t.integer :branch_id
+      t.integer :role_id, default: '2'
 
       t.timestamps
     end

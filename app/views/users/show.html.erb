@@ -1,37 +1,77 @@
 <% provide(:title, @user.cname) %>
-<h1>
-	<i class='icon-ok'></i>
-	<span>ID : <%= @user.id %></span>
-</h1>
-<h1>
-	<i class='icon-ok'></i>
-	<span>EName : <%= @user.ename %></span>
-</h1>
-<h1>
-	<i class='icon-ok'></i>
-	<span>CName : <%= @user.cname %></span>
-</h1>
-<h1>
-	<i class='icon-ok'></i>
-	<span>Email : <%= @user.email %></span>
-</h1>
-<h1>
-	<i class='icon-ok'></i>
-	<span>Branch_code : <%= @user.branch_code %></span>
-</h1>
-<h1>
-	<i class='icon-ok'></i>
-	<span>Role_id : <%= @user.role_id %></span>
-</h1>
-<h1>
-	<i class='icon-ok'></i>
-	<span>Created_at : <%= @user.created_at %></span>
-</h1>
-<h1>
-	<i class='icon-ok'></i>
-	<span>Updated_at : <%= @user.updated_at %></span>
-</h1>
-<h1>
-	<i class='icon-ok'></i>
-	<span>password_digest : <%= @user.password_digest %></span>
-</h1>
+<div class='page-header'>
+  <h1 class='pull-left'>
+    <i class='icon-user'></i>
+    <span>查看</span>
+  </h1>
+</div>
+<div class='row-fluid'>
+  <div class='span3 box'>
+    <div class='box-content'>
+      <%= image_tag "default_user.gif", alt: "default_user.gif", size:"230x230" %>
+    </div>
+  </div>
+  <div class='span9 box'>
+    <div class='box-content box-double-padding'>
+      <fieldset>
+        <div class='span4'>
+          <div class='lead'>
+            <i class='icon-signin text-contrast'></i>
+            登录信息
+          </div>
+          <small class='muted'>您登录时所需要的信息，用户名、邮箱地址、密码信息</small>
+        </div>
+        <div class='span7 offset1'>
+          <div class='control-group'>
+            <%= label :user, :ename, "英文名", class: "control-label" %>
+            <div class='controls'>
+              <%= text_field :user, :ename, class: "span12", readonly: true %>
+            </div>
+          </div>
+          <div class='control-group'>
+            <%= label :user, :email, "邮箱地址", class: "control-label" %>
+            <div class='controls'>
+              <%= text_field :user, :email, class: "span12", readonly: true %>
+            </div>
+          </div>
+        </div>
+      </fieldset>
+      <hr class='hr-normal' />
+      <fieldset>
+        <div class='span4 box'>
+          <div class='lead'>
+            <i class='icon-user text-contrast'></i>
+            附加信息
+          </div>
+          <small class='muted'>附加信息，只做备注</small>
+        </div>
+        <div class='span7 offset1'>
+          <div class='control-group'>
+            <%= label :user, :cname, "中文名", class: "control-label" %>
+            <div class='controls'>
+              <%= text_field :user, :cname, class: "span12", readonly: true %>
+            </div>
+          </div>
+          <div class='control-group'>
+          <%= label :user, :branch_id, "所属分支机构", class: "control-label" %>
+            <div class='controls'>
+              <%= text_field :user, :branch_id, value: @user.branch.branch_name, class: "span12", readonly:true %>
+            </div>
+          </div>
+          <div class='control-group'>
+            <%= label :user, :role_id, "角色", class: "control-label" %>
+            <div class='controls'>
+              <%= text_field :user, :role_id, value: @user.role.role_cname, class: "span12", readonly:true %>
+            </div>
+          </div>
+          <div class='control-group'>
+            <%= label :user, :created_at, "创建时间", class: "control-label" %>
+            <div class='controls'>
+              <%= text_field :user, :created_at, class: "span12", readonly:true, value: @user.created_at.strftime("%Y-%m-%d %H:%M:%S") %>
+            </div>
+          </div>
+        </div>
+      </fieldset>
+    </div>
+  </div>
+</div>
