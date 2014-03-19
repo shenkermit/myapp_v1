@@ -29,7 +29,7 @@ class User < ActiveRecord::Base
 	end
 
 	def admin?
-		self.role_id == 1
+		self.role.role_name == 'admin'
 	end
 
 	private
