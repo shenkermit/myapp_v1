@@ -1,0 +1,25 @@
+<tr>
+  <td><%= user.cname %></td>
+  <td><%= user.email %></td>
+  <td><%= user.branch.branch_name %></td>
+  <td><%= user.role.role_cname %></td>
+  <td><%= user.created_at.strftime("%Y-%m-%d %H:%M:%S") %></td>
+  <td>
+    <div class='text-right'>
+      <%= link_to user_path(user.id), class: 'btn btn-success btn-mini has-tooltip', :'data-placement'=> 'bottom', title: '查看详情' do %>
+        <i class='icon-user'></i>
+      <% end %>
+      <% if !current_user?(user) && current_user.admin? %>
+        <i class='btn btn-success btn-mini has-tooltip' data-placement='bottom' title='修改权限' href='#'>
+          <i class='icon-edit'></i>
+        </i>
+        <a class='btn btn-primary btn-mini has-tooltip' data-placement='bottom' title='重置密码' href='#'>
+          <i class='icon-refresh'></i>
+        </a>
+        <%= link_to user_path(user.id), method: :delete, class: 'btn btn-danger btn-mini has-tooltip', :'data-placement'=>'bottom', title: '删除', data: {confirm: "确认删除？"}  do %>
+          <i class='icon-remove'></i>
+        <% end %>
+      <% end %>
+    <div>
+  </td>
+</tr>
