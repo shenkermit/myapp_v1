@@ -23,6 +23,20 @@ def make_users
 				role_id: '2',
 				password: "123456",
 				password_confirmation: "123456")
+
+	50.times do |n|
+		ename = "00#{n+3}"
+		cname = "凹凸曼#{n+3}号"
+		email = "00#{n+3}@qq.com"
+		password = "123456"
+		User.create(ename: ename,
+				cname: cname,
+				email: email,
+				branch_id: '1',
+				role_id: '2',
+				password: password,
+				password_confirmation: password)
+	end
 end
 
 def make_branches

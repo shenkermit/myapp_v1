@@ -6,13 +6,35 @@
   <td><%= user.created_at.strftime("%Y-%m-%d %H:%M:%S") %></td>
   <td>
     <div class='text-right'>
-      <%= link_to user_path(user.id), class: 'btn btn-success btn-mini has-tooltip', :'data-placement'=> 'bottom', title: '查看详情' do %>
+      <%= link_to user_path(user.id), class: 'btn btn-info btn-mini has-tooltip', :'data-placement'=> 'bottom', title: '查看详情' do %>
         <i class='icon-user'></i>
       <% end %>
       <% if !current_user?(user) && current_user.admin? %>
-        <i class='btn btn-success btn-mini has-tooltip' data-placement='bottom' title='修改权限' href='#'>
+        <a class='btn btn-success btn-mini has-tooltip' data-placement='bottom' title='修改权限' data-toggle='modal' href='#modal-form' role='button'>
           <i class='icon-edit'></i>
-        </i>
+        </a>
+        <div class='modal hide fade text-left' id='modal-form' role='dialog' tabindex='-1'>
+          <div class='modal-header'>
+            <button class='close' data-dismiss='modal' type='button'>&times;</button>
+            <h3>用户权限设置</h3>
+          </div>
+          <div class='modal-body'>
+            <%= form_for(user) do |f| %>
+              <div class='controls-group'>
+                <%= f.label :role_cname, "角色", class: "control-label" %>
+                <div class='controls'>
+                  <%= f.select :role_id, Role.all.collect {|r| [r.role_cname, r.id] }, {:include_blank => true}, class: "span12" %>
+                </div>
+              </div>
+            <% end %>
+          </div>
+          <div class='modal-footer'>
+            <button class='btn' data-dismiss='modal'>关闭</button>
+            <%= button_tag class: 'btn btn-primary' do %>
+              修改
+            <% end %>
+          </div>
+        </div>
         <a class='btn btn-primary btn-mini has-tooltip' data-placement='bottom' title='重置密码' href='#'>
           <i class='icon-refresh'></i>
         </a>
