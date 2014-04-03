@@ -60,6 +60,14 @@ class UsersController < ApplicationController
 		redirect_to users_path
 	end
 
+	def password
+		@user = User.find(params[:id])
+	end
+
+	def change_password
+		@user = User.find(params[:id])
+	end
+
 	private
 		def user_params
 			params.require(:user).permit(:ename, :cname, :email, 

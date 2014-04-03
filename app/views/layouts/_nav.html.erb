@@ -26,6 +26,12 @@
               <span>编辑</span>
             <% end %>
           </li>
+          <li>
+            <%= link_to password_user_path(current_user) do %>
+              <i class='icon-cog'></i>
+              <span>修改密码</span>
+            <% end %>
+          </li>
         </ul>
       </li>
       <li class='active'>

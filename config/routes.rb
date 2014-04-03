@@ -1,5 +1,11 @@
 MyappV1::Application.routes.draw do
-  resources :users
+  resources :users do
+    member do
+      get :password
+      patch :change_password
+    end
+  end
+  
   resources :sessions, only: [:new, :create, :destroy]
   
   root to: 'sessions#new'
