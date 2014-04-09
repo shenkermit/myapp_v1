@@ -20,6 +20,30 @@ class User < ActiveRecord::Base
 
 	has_secure_password
 
+	attr_reader :current_password
+	def update_password(user_params)
+		current_password = user_params.delete(:current_password)
+
+		#旧密码
+		unless self.authenticate(current_password)
+			self.errors.add(:current_password, current_password.blank? ? '旧密码不能为空' : '旧密码不正确')
+			return false
+		end
+
+		#新密码
+		unless user_params[:password].present?
+			self.errors.add(:password, '请输入新密码')
+			return false
+		end
+
+		unless user_params[:password].length.between?(6,10)
+			self.errors.add(:password, '新密码长度不正确，应该在6到10位之间')
+			return false
+		end
+
+		self.update(user_params)
+	end
+
 	def User.new_remember_token
 		SecureRandom.urlsafe_base64
 	end

@@ -66,12 +66,18 @@ class UsersController < ApplicationController
 
 	def change_password
 		@user = User.find(params[:id])
+		if  @user.update_password(user_params)
+			flash[:success] = "密码修改成功！"
+			redirect_to home_path
+		else
+			render 'password'
+		end
 	end
 
 	private
 		def user_params
 			params.require(:user).permit(:ename, :cname, :email, 
-							:branch_id, :role_id,
+							:branch_id, :role_id, :current_password,
 							:password, :password_confirmation)
 		end
 
